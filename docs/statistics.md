@@ -15,11 +15,11 @@ public class App
     {
         Statistics stats = new Statistics();
         
-    	StatisticsResponse stats = stats.get();
+    	StatisticsResponse statsresponse = stats.getStats();
     	System.out.println(String.format("The current difficulty is %s. "
     			+ "The next retarget will happen in %s hours.",
-    			stats.getDifficulty(),
-    			(stats.getNextRetarget() - stats.getTotalBlocks()) * stats.getMinutesBetweenBlocks() / 60));
+    			statsresponse.getDifficulty(),
+    			(statsresponse.getNextRetarget() - statsresponse.getTotalBlocks()) * statsresponse.getMinutesBetweenBlocks() / 60));
     			
         Chart txPerSec = stats.getChart("transactions-per-second", "5weeks", "8hours");
         
@@ -27,4 +27,3 @@ public class App
     }
 }
 
-```
